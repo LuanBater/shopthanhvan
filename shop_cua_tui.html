@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>SHOP QUẦN ÁO | Đặt Hàng Online</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f2f4f7;
+      color: #111;
+    }
+    header {
+      background: #000;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 { margin: 0; font-size: 22px; }
+    header p { margin: 5px 0 0; font-size: 14px; opacity: 0.8; }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 15px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+    .card .info {
+      padding: 15px;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+    .price {
+      font-weight: 700;
+      color: #e60023;
+      margin-bottom: 10px;
+    }
+    .card button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #000;
+      color: #fff;
+      cursor: pointer;
+    }
+    .card button:hover { background: #333; }
+
+    .order-box {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      padding: 20px;
+      position: sticky;
+      top: 20px;
+    }
+    .order-box h2 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    label { font-size: 13px; font-weight: 600; margin-top: 12px; display: block; }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .submit {
+      margin-top: 18px;
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .submit:hover { background: #333; }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      padding: 20px 0;
+    }
+
+    @media (max-width: 900px) {
+      .container { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>SHOP QUẦN ÁO ONLINE</h1>
+  <p>Hàng đẹp – Giá tốt – Giao hàng toàn quốc</p>
+</header>
+
+<div class="container">
+
+  <div class="products">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab" />
+      <div class="info">
+        <h3>Áo Thun Basic</h3>
+        <div class="price">199.000đ</div>
+        <button onclick="selectProduct('Áo Thun Basic')">Chọn mua</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246" />
+      <div class="info">
+        <h3>Quần Jean Nam</h3>
+        <div class="price">399.000đ</div>
+        <button onclick="selectProduct('Quần Jean Nam')">Chọn mua</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f" />
+      <div class="info">
+        <h3>Áo Khoác</h3>
+        <div class="price">499.000đ</div>
+        <button onclick="selectProduct('Áo Khoác')">Chọn mua</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="order-box">
+    <h2>Thông Tin Đặt Hàng</h2>
+    <form action="https://formspree.io/f/xregkwzv" method="POST">
+      <label>Sản phẩm</label>
+      <input type="text" name="product" id="product" required />
+
+      <label>Size</label>
+      <select name="size">
+        <option>S</option><option>M</option><option>L</option><option>XL</option>
+      </select>
+
+      <label>Số lượng</label>
+      <input type="number" name="quantity" value="1" min="1" />
+
+      <label>Họ tên</label>
+      <input type="text" name="name" required />
+
+      <label>Số điện thoại</label>
+      <input type="tel" name="phone" required />
+
+      <label>Địa chỉ giao hàng</label>
+      <textarea name="address" rows="3" required></textarea>
+
+      <button class="submit">ĐẶT HÀNG NGAY</button>
+    </form>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 Shop Quần Áo | Order nhanh – Xác nhận trong 5 phút
+</footer>
+
+<script>
+  function selectProduct(name) {
+    document.getElementById('product').value = name;
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
